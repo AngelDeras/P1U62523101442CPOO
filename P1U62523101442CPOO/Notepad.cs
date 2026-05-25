@@ -6,5 +6,10 @@ namespace P1U62523101442CPOO
         {
             InitializeComponent();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
