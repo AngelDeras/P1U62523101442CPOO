@@ -11,5 +11,11 @@ namespace P1U62523101442CPOO
         {
             this.Close();
         }
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Notepad newNotepad = new Notepad();
+            newNotepad.Show();
+        }
     }
 }
