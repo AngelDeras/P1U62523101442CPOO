@@ -28,7 +28,7 @@ namespace P1U62523101442CPOO
                 writeFile.Close();
 
                 file.Close();
-                this.Text = $"{Path.GetFileName(currentPath)}: Notepad";
+                this.Text = $"{Path.GetFileNameWithoutExtension(currentPath)}: Notepad";
             }
             else
                 MessageBox.Show("We can't save this file, sorry :(.");
@@ -49,7 +49,7 @@ namespace P1U62523101442CPOO
             writeFile.Close();
 
             file.Close();
-            this.Text = $"{Path.GetFileName(currentPath)}: Notepad";
+            this.Text = $"{Path.GetFileNameWithoutExtension(currentPath)}: Notepad";
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,7 +64,10 @@ namespace P1U62523101442CPOO
                 }
 
                 else if (result == DialogResult.No)
+                {
                     textBox.Text = null;
+                    this.Text = "Untitle: Notepad";
+                }
 
                 else if (result == DialogResult.Cancel)
                     return;
@@ -141,8 +144,18 @@ namespace P1U62523101442CPOO
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Font font = new Font();
-            font.ShowDialog();
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+                textBox.Font = fontDialog1.Font;
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotepadMode.SetDarkMode(textBox);
+        }
+
+        private void lightModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotepadMode.SetLightMode(textBox);
         }
     }
 }
