@@ -7,12 +7,6 @@ namespace P1U62523101442CPOO
             InitializeComponent();
         }
 
-        void OpenNewNotepad()
-        {
-            Notepad newNotepad = new Notepad();
-            newNotepad.Show();
-        }
-
         void SaveFile()
         {
             if (saveFileDialog1 == null)
@@ -47,18 +41,35 @@ namespace P1U62523101442CPOO
                     SaveFile();
                     textBox.Text = null;
                 }
+
+                else if (result == DialogResult.No)
+                    textBox.Text = null;
+
+                else if (result == DialogResult.Cancel)
+                    return;
             }
         }
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            OpenNewNotepad();
+            Notepad newNotepad = new Notepad();
+            newNotepad.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader read = new StreamReader(openFileDialog1.FileName);
+                textBox.Text = read.ReadToEnd();
+                read.Close();
+            }
         }
     }
 }
