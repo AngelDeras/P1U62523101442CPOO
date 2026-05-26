@@ -104,7 +104,7 @@ namespace P1U62523101442CPOO
             saveFile();
         }
 
-        private void saveAssToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFile();
         }
