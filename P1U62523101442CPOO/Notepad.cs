@@ -138,5 +138,11 @@ namespace P1U62523101442CPOO
         {
             textBox.SelectAll();
         }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Font font = new Font();
+            font.ShowDialog();
+        }
     }
 }
