@@ -115,6 +115,7 @@
             saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
             saveToolStripMenuItem.Size = new Size(256, 22);
             saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // saveAssToolStripMenuItem
             // 
@@ -122,6 +123,7 @@
             saveAssToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.S;
             saveAssToolStripMenuItem.Size = new Size(256, 22);
             saveAssToolStripMenuItem.Text = "Save as...";
+            saveAssToolStripMenuItem.Click += saveAssToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 

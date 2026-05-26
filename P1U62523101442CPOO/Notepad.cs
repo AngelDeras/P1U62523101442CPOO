@@ -2,12 +2,14 @@ namespace P1U62523101442CPOO
 {
     public partial class Notepad : Form
     {
+        string? currentPath = null;
         public Notepad()
         {
             InitializeComponent();
+            this.Text = "Untitle: Notepad";
         }
 
-        void SaveFile()
+        void SaveAsFile()
         {
             if (saveFileDialog1 == null)
                 saveFileDialog1 = new SaveFileDialog();
@@ -18,17 +20,36 @@ namespace P1U62523101442CPOO
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string path = saveFileDialog1.FileName;
-                FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write);
+                currentPath = saveFileDialog1.FileName;
+                FileStream file = new FileStream(currentPath, FileMode.Create, FileAccess.Write);
 
                 StreamWriter writeFile = new StreamWriter(file);
                 writeFile.WriteLine(textBox.Text);
                 writeFile.Close();
 
                 file.Close();
+                this.Text = $"{Path.GetFileName(currentPath)}: Notepad";
             }
             else
                 MessageBox.Show("We can't save this file, sorry :(.");
+        }
+
+        void saveFile()
+        {
+            if (string.IsNullOrEmpty(currentPath))
+            {
+                SaveAsFile();
+                return;
+            }
+
+            FileStream file = new FileStream(currentPath, FileMode.Create, FileAccess.Write);
+
+            StreamWriter writeFile = new StreamWriter(file);
+            writeFile.WriteLine(textBox.Text);
+            writeFile.Close();
+
+            file.Close();
+            this.Text = $"{Path.GetFileName(currentPath)}: Notepad";
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,7 +59,7 @@ namespace P1U62523101442CPOO
                 var result = MessageBox.Show("Do you want to save changes?", "Notepad", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    SaveFile();
+                    saveFile();
                     textBox.Text = null;
                 }
 
@@ -66,10 +87,26 @@ namespace P1U62523101442CPOO
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                currentPath = openFileDialog1.FileName;
+
                 StreamReader read = new StreamReader(openFileDialog1.FileName);
                 textBox.Text = read.ReadToEnd();
                 read.Close();
+
+                this.Text = $"{Path.GetFileNameWithoutExtension(currentPath)}: Notepad";
             }
+            else
+                MessageBox.Show("We can't open this file, sorry :(.");
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFile();
+        }
+
+        private void saveAssToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFile();
         }
     }
 }
