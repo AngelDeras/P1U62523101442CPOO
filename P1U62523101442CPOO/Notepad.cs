@@ -81,10 +81,7 @@ namespace P1U62523101442CPOO
             newNotepad.Show();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => this.Close();
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -102,45 +99,21 @@ namespace P1U62523101442CPOO
                 MessageBox.Show("We can't open this file, sorry :(.");
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFile();
-        }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) => saveFile();
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFile();
-        }
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) => saveFile();
 
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.Undo();
-        }
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e) => textBox.Undo();
 
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.Cut();
-        }
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e) => textBox.Cut();
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.Copy();
-        }
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e) => textBox.Copy();
 
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.Paste();
-        }
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e) => textBox.Paste();
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.SelectedText = "";
-        }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => textBox.SelectedText = "";
 
-        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textBox.SelectAll();
-        }
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e) => textBox.SelectAll();
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -148,14 +121,8 @@ namespace P1U62523101442CPOO
                 textBox.Font = fontDialog1.Font;
         }
 
-        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NotepadMode.SetDarkMode(textBox);
-        }
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e) => NotepadMode.SetDarkMode(textBox);
 
-        private void lightModeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NotepadMode.SetLightMode(textBox);
-        }
+        private void lightModeToolStripMenuItem_Click(object sender, EventArgs e) => NotepadMode.SetLightMode(textBox);
     }
 }
